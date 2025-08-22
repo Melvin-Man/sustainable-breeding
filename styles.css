@@ -1,0 +1,218 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f7f4; /* Warm neutral background */
+}
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 320px;
+    max-height: 400px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+    }
+}
+.nav-item {
+    transition: all 0.3s ease;
+}
+.nav-item.active {
+    background-color: #0d9488; /* Teal-700 */
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.nav-item:not(.active):hover {
+    background-color: #f0f0f0;
+}
+.card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #e5e7eb;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 9999px;
+    background-color: #0d9488;
+    border: 2px solid white;
+}
+.disease-item {
+    cursor: pointer;
+}
+.disease-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+/* ========== VARIABLES GLOBALES ========== */
+:root {
+    /* Colores para modo claro */
+    --bg-color: #f8f7f4;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --title-color: #0d9488;
+    --subtitle-color: #0f766e;
+    --primary: #0d9488;
+    --primary-light: #14b8a6;
+}
+
+/* ========== MODO OSCURO ========== */
+.dark-mode {
+    /* Colores para modo oscuro */
+    --bg-color: #1a1a1a;
+    --text-color: #e2e8f0;
+    --card-bg: #2d3748;
+    --border-color: #4a5568;
+    --title-color: #81E6D9;
+    --subtitle-color: #4FD1C5;
+    --primary: #81E6D9;
+    --primary-light: #4FD1C5;
+}
+
+/* Aplicar variables a los elementos */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card {
+    background-color: var(--card-bg);
+}
+
+.dark-mode .bg-stone-50 {
+    background-color: #4a5568;
+}
+
+.dark-mode .text-stone-600,
+.dark-mode .text-stone-500 {
+    color: #cbd5e0;
+}
+
+.dark-mode .text-stone-800 {
+    color: #e2e8f0;
+}
+
+.dark-mode .bg-white {
+    background-color: var(--card-bg);
+}
+
+.dark-mode .disease-item {
+    background-color: #4a5568;
+}
+
+.dark-mode .disease-item:hover {
+    background-color: #4a5568;
+}
+
+.dark-mode .timeline::before {
+    background-color: #4a5568;
+}
+
+.dark-mode select {
+    background-color: #4a5568;
+    color: #e2e8f0;
+    border-color: #718096;
+}
+
+/* ========== ESTILOS PARA TÍTULOS ========== */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--title-color);
+}
+
+header h1 {
+    color: var(--title-color);
+}
+
+.card h2, 
+.card h3, 
+.card h4 {
+    color: var(--subtitle-color);
+}
+
+.text-teal-700,
+.text-teal-800 {
+    color: var(--primary);
+}
+
+.dark-mode .font-bold,
+.dark-mode .font-semibold {
+    color: var(--text-color);
+}
+
+/* Botón de tema */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-btn {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para botones de especie en modo oscuro */
+.dark-mode .nav-item {
+    background-color: #4a5568;
+    color: #e2e8f0;
+}
+
+.dark-mode .nav-item.active {
+    background-color: var(--primary);
+    color: #2d3748;
+    font-weight: bold;
+}
+
+.dark-mode .nav-item:not(.active):hover {
+    background-color: #718096;
+}
+

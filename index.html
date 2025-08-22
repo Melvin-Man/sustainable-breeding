@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Breeding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-stone-800">
+
+    <div class="theme-switcher"><button class="theme-btn" id="theme-toggle">🌙</button></div>
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-teal-800 mb-2">Sustainable Breeding</h1>
+            <p class="text-lg text-stone-600">A tool to explore best practices in animal production.</p>
+        </header>
+
+        <div class="flex justify-center mb-6">
+            <button id="dark-mode-toggle" class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors">
+                <span class="text-xl">🌙</span>
+                <span>Dark Mode</span>
+            </button>
+        </div>
+        
+        <nav id="species-nav" class="flex flex-wrap justify-center gap-3 md:gap-4 mb-10">
+            <!-- Navigation items will be injected by JS -->
+        </nav>
+
+        <main id="content-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+            
+            <div id="razas-card" class="card col-span-1 md:col-span-2 xl:col-span-3 p-6">
+                <h2 class="text-2xl font-bold mb-1 text-teal-700">Breed Selection</h2>
+                <p class="text-stone-600 mb-4">Choosing the right breed is a strategic decision that impacts productivity and sustainability. This section allows you to compare breeds based on their purpose and climate adaptation, a key factor for optimizing the use of local resources and profitability.</p>
+                <div class="chart-container">
+                    <canvas id="razasChart"></canvas>
+                </div>
+            </div>
+
+            <div id="ciclo-vida-card" class="card p-6">
+                <h2 class="text-2xl font-bold mb-1 text-teal-700">Life Cycle</h2>
+                <p class="text-stone-600 mb-4">Understanding growth stages is vital for efficient management. Explore the key phases from birth to maturity to optimize nutrition, health, and production planning.</p>
+                <div id="ciclo-vida-content" class="mt-4"></div>
+            </div>
+
+            <div id="nutricion-card" class="card p-6">
+                <h2 class="text-2xl font-bold mb-1 text-teal-700">Balanced Nutrition</h2>
+                <p class="text-stone-600 mb-4">Feed represents the highest production cost. Here you can visualize nutritional requirements by species and stage, key to maximizing feed efficiency and profitability.</p>
+                <div class="flex justify-center mb-4">
+                    <select id="nutricion-stage-selector" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full md:w-1/2 p-2.5">
+                    </select>
+                </div>
+                <div class="chart-container h-64 md:h-72">
+                    <canvas id="nutricionChart"></canvas>
+                </div>
+            </div>
+
+            <div id="infraestructura-card" class="card p-6">
+                <h2 class="text-2xl font-bold mb-1 text-teal-700">Infrastructure and Space</h2>
+                <p class="text-stone-600 mb-4">Proper facility design is essential for welfare and productivity. This section details the space requirements to prevent stress and diseases, which translates into better performance.</p>
+                <div id="infraestructura-content" class="grid grid-cols-2 gap-4 text-center mt-6"></div>
+            </div>
+
+            <div id="sanidad-card" class="card col-span-1 md:col-span-2 p-6">
+                <h2 class="text-2xl font-bold mb-1 text-teal-700">Health and Prevention</h2>
+                <p class="text-stone-600 mb-4">Prevention is the foundation of a healthy and profitable herd. Explore the most common diseases and key preventive measures. Click on a disease to see more details.</p>
+                <div id="sanidad-content" class="space-y-2 mt-4 max-h-96 overflow-y-auto pr-2"></div>
+            </div>
+
+            <div id="sostenibilidad-card" class="card p-6">
+                <h2 class="text-2xl font-bold mb-1 text-teal-700">Impact and Sustainability</h2>
+                <p class="text-stone-600 mb-4">Sustainable livestock farming seeks to align profitability with environmental responsibility. Learn about the impact of production and key practices to mitigate it, such as waste management and efficient water use.</p>
+                <div id="sostenibilidad-content" class="space-y-4 mt-6"></div>
+            </div>
+            
+            <div id="rendimiento-card" class="card p-6">
+                <h2 class="text-2xl font-bold mb-1 text-teal-700">Production and Performance</h2>
+                <p class="text-stone-600 mb-4">Efficiency is the engine of profitability. This section presents key performance indicators, such as weight gain and feed conversion, which are fundamental for a successful operation.</p>
+                <div id="rendimiento-content" class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center mt-6"></div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="app-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
